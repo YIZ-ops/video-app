@@ -1,0 +1,33 @@
+<view>
+
+  <view class='container'>
+  
+    <block wx:if="{{isMe}}">
+      <image src='{{faceUrl}}' class='face' bindtap='changeFace'></image>
+    </block>
+  
+    <block wx:if="{{!isMe}}">
+      <image src='{{faceUrl}}' class='face'></image>
+    </block>
+    <label class='nickname'>{{nickname}}</label>
+
+    <block wx:if="{{isMe}}">
+      <button size='mini' class='logout' bindtap='logout'>注销</button>
+    </block>
+  </view>
+
+  <view class='line'></view>
+
+  <view class='container-video'>
+    <!-- 收藏的点赞视频 -->
+    <view class='{{videoSelClass}} {{isSelectedLike}}' bindtap='doSelectLike'>收藏</view>
+  </view>
+
+  <view class='container-video-list'>
+    <view>
+    <block wx:for="{{likeVideoList}}" wx:key="key">
+      <image src='{{serverUrl}}{{item.coverPath}}' class='videoImage' mode='aspectFill' bindtap='showVideo' data-arrindex='{{index}}'></image>
+    </block>
+  </view>
+  </view>
+</view>
